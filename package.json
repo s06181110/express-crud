@@ -1,0 +1,19 @@
+{
+  "name": "express-crud",
+  "version": "1.0.0",
+  "description": "simple sample of express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s06181110/express-crud.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s06181110/express-crud/issues"
+  },
+  "homepage": "https://github.com/s06181110/express-crud#readme"
+}
