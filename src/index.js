@@ -3,9 +3,13 @@ const app = express()
 const port = 3000
 const mysql = require('mysql2/promise')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 // postとかできるようにする
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(cors())
+app.set('view engine', 'ejs');
 
 const dbConfig = {
     host: 'db',
@@ -28,8 +32,9 @@ app.get('/todos', async (req, res) => {
 // データ追加
 app.post('/todos', async (req, res) => {
     const db = await mysql.createConnection(dbConfig)
-    const [row] = await db.query('insert into `todos` set ?', req.body)
-    res.send('ok')
+    const result = await db.query('insert into `todos` set ?', req.body)
+    const [row] = await db.query('select * from `todos` where id = ?', result[0].insertId)
+    res.send(row)
 })
 
 // 1つだけ取得
